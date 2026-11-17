@@ -1,0 +1,4 @@
+module PssCore {
+    header "pss_core.h"
+    export *
+}

@@ -1,0 +1,41 @@
+[package]
+name = "pss-ios-core"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "Apache-2.0"
+publish = false
+description = "Native core of the private shielded sync client for iOS: a C API over the scan kernel and the wallet's shielded key derivation."
+
+# A static library for the iOS app (`build.sh` packages it as PssCore.xcframework). `Cargo.lock` started as the
+# kernel's (`../../kernel/Cargo.lock`): every crate the kernel locks keeps its exact version; bip39, bip32 and their
+# dependencies are added. Build with `--locked`.
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+pss-kernel = { path = "../../kernel" }
+transient-crypto = { package = "midnight-transient-crypto", version = "=3.0.1" }
+coin-structure = { package = "midnight-coin-structure", version = "=3.0.1" }
+base-crypto = { package = "midnight-base-crypto", version = "=1.1.1" }
+serialize = { package = "midnight-serialize", version = "=1.2.1" }
+bip39 = { version = "=2.2.2", default-features = false, features = ["std", "zeroize"] }
+bip32 = { version = "=0.5.3", default-features = false, features = ["secp256k1", "std"] }
+zeroize = "1.8"
+
+[dev-dependencies]
+serde_json = "1"
+hex = "0.4"
+rand = "0.8"
+rand_chacha = "0.3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = false
+
+# The tests run the curve arithmetic over the fixtures; optimize the dependencies even in test builds.
+[profile.dev.package."*"]
+opt-level = 3

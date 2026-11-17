@@ -1,0 +1,354 @@
+{
+  "checks" : [
+    {
+      "detail" : "a warm-up and 3 timed calls of scanValues and of scan",
+      "name" : "vectors: repeat runs agree",
+      "ok" : true
+    },
+    {
+      "detail" : "16384 entries, 524288 bytes equal",
+      "name" : "vectors: Metal scanValues = CPU ScanPool.scanValues",
+      "ok" : true
+    },
+    {
+      "detail" : "Metal 18 hits, CPU 18 hits",
+      "name" : "vectors: Metal scan = CPU ScanPool.scan",
+      "ok" : true
+    },
+    {
+      "detail" : "16384 entries, 524288 bytes equal",
+      "name" : "vectors: Metal values = the ledger's (pads.bin)",
+      "ok" : true
+    },
+    {
+      "detail" : "18 of 18",
+      "name" : "vectors: Metal hits = the ledger's (mine.bin)",
+      "ok" : true
+    },
+    {
+      "detail" : "a warm-up and 3 timed calls of scanValues and of scan",
+      "name" : "preprod: repeat runs agree",
+      "ok" : true
+    },
+    {
+      "detail" : "70000 entries, 2240000 bytes equal",
+      "name" : "preprod: Metal scanValues = CPU ScanPool.scanValues",
+      "ok" : true
+    },
+    {
+      "detail" : "Metal 82 hits, CPU 82 hits",
+      "name" : "preprod: Metal scan = CPU ScanPool.scan",
+      "ok" : true
+    },
+    {
+      "detail" : "1000000 entries, 32000000 bytes equal",
+      "name" : "1000000 entries: Metal scanValues = CPU's (the 70,000 set repeated)",
+      "ok" : true
+    },
+    {
+      "detail" : "Metal 1179 hits, CPU 1179 hits",
+      "name" : "1000000 entries: Metal scan = CPU's (repeated)",
+      "ok" : true
+    },
+    {
+      "detail" : "3 calls of scanValues and of scan",
+      "name" : "1000000 entries: repeat runs agree",
+      "ok" : true
+    },
+    {
+      "detail" : "2000000 entries, 64000000 bytes equal",
+      "name" : "2000000 entries: Metal scanValues = CPU's (the 70,000 set repeated)",
+      "ok" : true
+    },
+    {
+      "detail" : "Metal 2345 hits, CPU 2345 hits",
+      "name" : "2000000 entries: Metal scan = CPU's (repeated)",
+      "ok" : true
+    },
+    {
+      "detail" : "Metal hits against the CPU's for the original: lost [556], gained [] (changed 556)",
+      "name" : "negative control: one tag bit changed in a hit",
+      "ok" : true
+    },
+    {
+      "detail" : "entries whose value differs from the CPU's for the original: [556] (changed 556)",
+      "name" : "negative control: one point byte changed",
+      "ok" : true
+    },
+    {
+      "detail" : "secret must be 32 bytes, got 31",
+      "name" : "refusal: 31-byte secret",
+      "ok" : true
+    },
+    {
+      "detail" : "the secret is not a canonical scalar",
+      "name" : "refusal: secret = r",
+      "ok" : true
+    },
+    {
+      "detail" : "the secret is not a canonical scalar",
+      "name" : "refusal: secret = 2^256 − 1",
+      "ok" : true
+    },
+    {
+      "detail" : "scan entries must be a whole number of 36-byte entries (35 bytes)",
+      "name" : "refusal: 35-byte entries",
+      "ok" : true
+    },
+    {
+      "detail" : "scan [] and scanValues of 0 bytes; r − 1 gives 128 bytes",
+      "name" : "no entries; secret r − 1 accepted",
+      "ok" : true
+    }
+  ],
+  "date" : "2026-11-15T21:17:07Z",
+  "environment" : {
+    "cpuThreads" : 8,
+    "device" : "Apple M4 Max",
+    "loadAverageAfter" : [
+      7.90478515625,
+      11.1982421875,
+      9.17724609375
+    ],
+    "loadAverageBefore" : [
+      8.50634765625,
+      11.37060546875,
+      9.2255859375
+    ],
+    "maxBufferLength" : 28991029248,
+    "node" : "v24.9.0",
+    "os" : "Version 15.7.3 (Build 24G419)",
+    "recommendedMaxWorkingSetSize" : 38654705664,
+    "referenceLoadAverage" : [
+      [
+        4.373046875,
+        5.8916015625,
+        6.41015625
+      ],
+      [
+        23.2548828125,
+        12.33251953125,
+        8.837890625
+      ]
+    ]
+  },
+  "library" : {
+    "bytes" : 93410,
+    "compileMs" : 105.26670799999999,
+    "file" : "PssScanW32.metal",
+    "pipelinesMs" : 5.4609999999999994,
+    "uncachedCompileMs" : 77.827458000000007,
+    "uncachedPipelinesMs" : 251.20074999999997
+  },
+  "ok" : true,
+  "options" : {
+    "chunkBytes" : 22413312,
+    "chunkEntries" : 32768,
+    "digitsPerPass" : 37,
+    "maxTotalThreadsPerThreadgroup" : 0,
+    "stateWords" : 153,
+    "threadgroupWidth" : 64
+  },
+  "pipelines" : [
+    {
+      "maxTotalThreadsPerThreadgroup" : 1024,
+      "name" : "decompress",
+      "threadExecutionWidth" : 32
+    },
+    {
+      "maxTotalThreadsPerThreadgroup" : 1024,
+      "name" : "ladder",
+      "threadExecutionWidth" : 32
+    },
+    {
+      "maxTotalThreadsPerThreadgroup" : 1024,
+      "name" : "finish",
+      "threadExecutionWidth" : 32
+    },
+    {
+      "maxTotalThreadsPerThreadgroup" : 1024,
+      "name" : "torsion",
+      "threadExecutionWidth" : 32
+    }
+  ],
+  "scan" : [
+    {
+      "cpu" : {
+        "poolScanBestMs" : 1073.8353329999991,
+        "poolScanValuesBestMs" : 1069.9292920000007,
+        "poolUsPerEntry" : 65.303301513671926,
+        "singleThreadUsPerEntry" : 516.25008007813017,
+        "threads" : 8
+      },
+      "entries" : 16384,
+      "firstCallWallMs" : 31.481042000000002,
+      "runs" : 3,
+      "scan" : {
+        "allWallMs" : [
+          15.200125,
+          15.272459,
+          15.186207999999999
+        ],
+        "bestWallMs" : 15.186207999999999,
+        "hits" : 18,
+        "minGpuMs" : 14.871708233840764,
+        "torsionOfBestMs" : 2.8789166826754808
+      },
+      "scanValues" : {
+        "allGpuMs" : [
+          11.99229178018868,
+          12.046791729517281,
+          12.051875004544854
+        ],
+        "allWallMs" : [
+          12.208542,
+          12.288,
+          12.30175
+        ],
+        "bestWallMs" : 12.208542,
+        "bestWallUsPerEntry" : 0.74515026855468747,
+        "chunks" : 1,
+        "commandBuffers" : 9,
+        "longestCommandBufferMs" : 3.9716250030323863,
+        "minGpuMs" : 11.99229178018868,
+        "minGpuUsPerEntry" : 0.73195140259940672,
+        "phasesOfBestMs" : {
+          "decompress" : 2.2221666295081377,
+          "finish" : 3.9716250030323863,
+          "ladder" : 5.7985001476481557
+        }
+      },
+      "set" : "vectors",
+      "speedupOverPool" : 87.637761495189253
+    },
+    {
+      "cpu" : {
+        "poolScanBestMs" : 4535.0554170000032,
+        "poolScanValuesBestMs" : 4500.9930840000015,
+        "poolUsPerEntry" : 64.299901200000022,
+        "singleThreadUsPerEntry" : 512.7009277343717,
+        "threads" : 8
+      },
+      "entries" : 70000,
+      "firstCallWallMs" : 50.541250000000005,
+      "runs" : 3,
+      "scan" : {
+        "allWallMs" : [
+          53.20975,
+          53.283417,
+          53.417332999999999
+        ],
+        "bestWallMs" : 53.20975,
+        "hits" : 82,
+        "minGpuMs" : 52.38958343397826,
+        "torsionOfBestMs" : 2.9711665119975805
+      },
+      "scanValues" : {
+        "allGpuMs" : [
+          49.51470869127661,
+          49.412999767810106,
+          49.607958295382559
+        ],
+        "allWallMs" : [
+          50.425333000000002,
+          50.238875,
+          50.584041000000006
+        ],
+        "bestWallMs" : 50.238875,
+        "bestWallUsPerEntry" : 0.71769821428571423,
+        "chunks" : 3,
+        "commandBuffers" : 27,
+        "longestCommandBufferMs" : 5.5396250681951642,
+        "minGpuMs" : 49.412999767810106,
+        "minGpuUsPerEntry" : 0.70589999668300152,
+        "phasesOfBestMs" : {
+          "decompress" : 9.1469166800379753,
+          "finish" : 16.508250031620264,
+          "ladder" : 23.757833056151867
+        }
+      },
+      "set" : "preprod",
+      "speedupOverPool" : 89.591836680260087
+    },
+    {
+      "cpu" : {
+        "poolScanValuesMs" : 87567.793417000008,
+        "poolUsPerEntry" : 87.567793417000004,
+        "threads" : 8
+      },
+      "entries" : 1000000,
+      "runs" : 3,
+      "scan" : {
+        "allWallMs" : [
+          665.45862499999998,
+          664.10983300000009,
+          666.34679200000005
+        ],
+        "bestWallMs" : 664.10983300000009,
+        "hits" : 1179,
+        "minGpuMs" : 656.83108288794756,
+        "torsionOfBestMs" : 3.023875062353909
+      },
+      "scanValues" : {
+        "allGpuMs" : [
+          655.44875047635287,
+          652.63762569520622,
+          654.46729201357812
+        ],
+        "allWallMs" : [
+          674.189167,
+          662.62250000000006,
+          663.47183300000006
+        ],
+        "bestWallMs" : 662.62250000000006,
+        "bestWallUsPerEntry" : 0.6626225,
+        "chunks" : 31,
+        "commandBuffers" : 279,
+        "longestCommandBufferMs" : 7.2204999160021544,
+        "minGpuMs" : 652.63762569520622,
+        "minGpuUsPerEntry" : 0.65263762569520622,
+        "phasesOfBestMs" : {
+          "decompress" : 121.19362538214773,
+          "finish" : 218.05612475145608,
+          "ladder" : 313.38787556160241
+        }
+      },
+      "set" : "1000k"
+    },
+    {
+      "entries" : 2000000,
+      "runs" : 1,
+      "scan" : {
+        "allWallMs" : [
+          1326.9818749999999
+        ],
+        "bestWallMs" : 1326.9818749999999,
+        "hits" : 2345,
+        "minGpuMs" : 1312.5387915642932,
+        "torsionOfBestMs" : 3.1401666346937418
+      },
+      "scanValues" : {
+        "allGpuMs" : [
+          1306.396417086944
+        ],
+        "allWallMs" : [
+          1327.0717500000001
+        ],
+        "bestWallMs" : 1327.0717500000001,
+        "bestWallUsPerEntry" : 0.663535875,
+        "chunks" : 62,
+        "commandBuffers" : 558,
+        "longestCommandBufferMs" : 7.22612498793751,
+        "minGpuMs" : 1306.396417086944,
+        "minGpuUsPerEntry" : 0.65319820854347199,
+        "phasesOfBestMs" : {
+          "decompress" : 242.51070828177035,
+          "finish" : 437.08204163704067,
+          "ladder" : 626.80366716813296
+        }
+      },
+      "set" : "2000k"
+    }
+  ],
+  "variant" : "w32"
+}

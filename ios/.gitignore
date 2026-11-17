@@ -1,0 +1,5 @@
+# Build outputs and the generated Xcode project (xcodegen generate writes it from project.yml).
+build/
+.build/
+PssSync.xcodeproj/
+check/.build/

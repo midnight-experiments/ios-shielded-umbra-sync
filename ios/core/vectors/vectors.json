@@ -1,0 +1,232 @@
+{
+  "description": "Test vectors of the private shielded sync client's key derivation (BIP-39 seed, empty passphrase; BIP-32 m/44'/2400'/0'/3/0; ZswapSecretKeys.fromSeed), coinNullifier, coinCommitment, degradeToTransient and transientHash of two fields, from the TypeScript packages below. coinSecretKey is the 32 bytes after the tag 'midnight:zswap-coin-secret-key[v1]:' of CoinSecretKey's serialization; scanSecret is kernel/secret-key.ts encryptionSecretKeyScalar of EncryptionSecretKey's serialization. Test keys only: fresh mnemonics and random seeds. Bytes are hex; field elements little-endian; values decimal.",
+  "generator": "ios/core/vectors/make-vectors.mjs",
+  "packages": {
+    "@midnightntwrk/ledger-v9": "1.0.1",
+    "@midnightntwrk/wallet-sdk-hd": "4.0.0",
+    "@scure/bip39": "2.4.0",
+    "@scure/bip32": "2.4.0"
+  },
+  "path": "m/44'/2400'/0'/3/0",
+  "keys": [
+    {
+      "mnemonic": "flower pig ill process merge magnet bind promote sunny glass dumb goddess hello thing museum only soda cotton scheme tongue curious spirit blast winner",
+      "zswapSeed": "4149cca3e7ee07049dc7f9abb5a3f3ed9f2afa09df914380b7ad8c654cf7b64d",
+      "coinPublicKey": "a72851260806fe97cd2fba69526f3ff10676e4583d2194ec5a7b6bce14f7e447",
+      "encryptionPublicKey": "16afb46526c29cb8c4dcbbc452715e5fdf06a318d6709c023d641be8fe8e54d4",
+      "scanSecret": "b6bc46d20591f32ed3f36f30350ba42e957109328229bb5cfd6b8325d4a58202",
+      "coinSecretKey": "9e61ad9effb0fac3d77045473d8ff76a665369fa2de23fdce2672b65a7405602"
+    },
+    {
+      "mnemonic": "phrase velvet girl muscle prosper toward axis disorder negative avoid old runway ribbon focus hint response snow galaxy salon actor build own legal mechanic",
+      "zswapSeed": "d51576bac83d1f88f302598ba99b15e27e19bf521ae6439109679925b4fd781b",
+      "coinPublicKey": "0c01c91afd56bf9fdb0a37840c8ca07105572ab074c9ff8fc84f9b25adbc7c47",
+      "encryptionPublicKey": "b6359309aba586d942e4b5af8438c19df18fc9b01a9ef9efda752e44bdd3bb11",
+      "scanSecret": "c0f672276ee747c18e385306653f05d6531b61274a54cb366ec41ca6925e5d07",
+      "coinSecretKey": "7640e0333239f4ce4351891aae88932aad75c9311ac2f2aa78489fb8b6bb0274"
+    },
+    {
+      "mnemonic": "nut horse slight wife rain cactus autumn humble popular shiver play nuclear cereal whip amount push weasel enact bag multiply blade illness coast usage",
+      "zswapSeed": "be9e92797e58da73adddc6c91e93d6d767d467e177e4156a1434d4a6c87b27ba",
+      "coinPublicKey": "1acb4e627471f5e6ac631edb64d75aef4c239e4a37b526764d10294e020fa5c2",
+      "encryptionPublicKey": "0e352e1251610f583ae1a0f6519681bed5ad99ef4f4bc567a0b348136b5a59e7",
+      "scanSecret": "152914e45e20d0511b7743ac29e6bd997366e69cd855e9e1b0a70e3a5c15c205",
+      "coinSecretKey": "4275a0a0e8bb2a1849ea86b4201d678fa70ac54f25d3ca55a0d3e6a926cd0a2e"
+    },
+    {
+      "mnemonic": null,
+      "zswapSeed": "1dad4d07fc033b456fee946a69d7d55506b22ab1184ab1da17b662bacf91f4d1",
+      "coinPublicKey": "0a87bf3ba92dd0748bc99f1a89d6add5c49dacd2050806624761cc3b486756f2",
+      "encryptionPublicKey": "680995cc070635619eb328d7eaccc9725b97bf0bbfc3c5e657e51ac774852edc",
+      "scanSecret": "7f71f89456e22ab945c171df702cf0b63bd819407524f77c2c8568a4d11eb409",
+      "coinSecretKey": "87d271796c0175c8aa62a2fe1848b6d11e2bca0aa31b15d8a939e624613e623f"
+    },
+    {
+      "mnemonic": null,
+      "zswapSeed": "38b19c5f4823b7d02a2bc8d195c62013c051aea07602423234da25acc1cd2aa3",
+      "coinPublicKey": "bf727f9ac2192931d26591a5b13e140d35d8ae94dd748efb64985417f4202dba",
+      "encryptionPublicKey": "32a0c99f8eb62e32688a15ed0ff3323a1cc76002eec40332d37699dc369d84d6",
+      "scanSecret": "b5b299f170b8465dd92dfb7484012e61db16396cfb78a65dd5908b691d85c809",
+      "coinSecretKey": "21c8318721eb6db07bffc207b937d6e6637c8f7d06526c1f66d806742539f7f4"
+    }
+  ],
+  "coins": [
+    {
+      "key": 0,
+      "tokenType": "68e873f5116ead48961890b9dae4ce3738f1f7896cea00a262b988187a8b8721",
+      "nonce": "04745ff35481de514bb0a8cb9a413c11bebcaceb00db318fdfa876101904368c",
+      "value": "0",
+      "commitment": "117b5987b1b1bc48cc1421f1c58589740d155d96963c1902ab89c418a8295c80",
+      "leaf": "117b5987b1b1bc48cc1421f1c58589740d155d96963c1902ab89c418a8295c00",
+      "nullifier": "f37f4d6514ce590c06844e5a0a1c33477d32c49969f6f522be5683cf02594885"
+    },
+    {
+      "key": 0,
+      "tokenType": "e32ddd11b36a031a73130fb7026d07e87ebb8a245dd4098c458fe9e6d5b3466c",
+      "nonce": "fb23ebfb6856c73ee485afe45686b2e2768caf77c2147d62526fffef20aa5516",
+      "value": "1",
+      "commitment": "fc43449123f670fea6fdba98608ee1806c0491bb5211ff9f44d83693e2634d04",
+      "leaf": "fc43449123f670fea6fdba98608ee1806c0491bb5211ff9f44d83693e2634d00",
+      "nullifier": "d797d7a0e5e4326655acf3ed4d50f3508c1437f8b80ec5a6e2a21d10e0f8a2a5"
+    },
+    {
+      "key": 0,
+      "tokenType": "ce8196dd9fb35fbcd4e5d7392ae5af2e186fc5e0c655156f5aad4b4cfa6e3d5c",
+      "nonce": "4f843106cb28dcbf2565d75b38362c54e7afe53debc40542db3f32d886d6c5fa",
+      "value": "1000000",
+      "commitment": "39135441d444f1e70fe1077e6c6aa03902ac7f81f479884989446efbb08c8d86",
+      "leaf": "39135441d444f1e70fe1077e6c6aa03902ac7f81f479884989446efbb08c8d00",
+      "nullifier": "410b52b528628c140c264c974d72de273634480eab3fe815bf6e179049c16640"
+    },
+    {
+      "key": 1,
+      "tokenType": "a243d5be170e388af44f5c43cbf5a8f347e9aa61bb86162f1401133b1fdb4dae",
+      "nonce": "63e7e5f527b8a8c2c60a87e1727be8ab929da138729e0c4ee4d03ad440ab2a9c",
+      "value": "340282366920938463463374607431768211455",
+      "commitment": "cfa657cff7eb256736d88558d8f3751324dbd3dcca407aabe2c8e621a30150d6",
+      "leaf": "cfa657cff7eb256736d88558d8f3751324dbd3dcca407aabe2c8e621a3015000",
+      "nullifier": "4fa598472e8072786f25dec8c00e3b61bcff8480ad8925d6cd1f88e2de0fa814"
+    },
+    {
+      "key": 1,
+      "tokenType": "858161e5c512ec475e3de6ac1341d4b96708769f84060803dccc2c84fb923a0c",
+      "nonce": "2dae5f44ffbcdef77a02f94ab33b30993c882910591075e0b6974ae60d40a7a4",
+      "value": "201551769199687944124993417534771853038",
+      "commitment": "0022bd6967d8a12dfbb80a2de3317824099f7108648882a6d0650c8935402bc0",
+      "leaf": "0022bd6967d8a12dfbb80a2de3317824099f7108648882a6d0650c8935402b00",
+      "nullifier": "a9a289b1f7b9140fac51de2e417ed51da57c9d40a64d93619062ef10cdf94d92"
+    },
+    {
+      "key": 1,
+      "tokenType": "26b696df6e2aef73ed0daf5136f804305c298177c4631cf03ee501e1b47fc37a",
+      "nonce": "76c814c623473605c59b0d808511f66bebe4e55817ae044c54aa5f244c775024",
+      "value": "136614866657555175188202710977905514081",
+      "commitment": "a98d24e17d85f4e4d9a36917ddbb112890b717b5bf6bd7e823d9b27ff22e222b",
+      "leaf": "a98d24e17d85f4e4d9a36917ddbb112890b717b5bf6bd7e823d9b27ff22e2200",
+      "nullifier": "11b1d029ed577a9cdcf61d345675730e508f5cb290c9f17922b37c4837b993cd"
+    },
+    {
+      "key": 2,
+      "tokenType": "486424b7989b0091e8c4a37d192eeb1887de15e765840f63424a3d5a129f6b9d",
+      "nonce": "82fd5dd7598daceebc38a7e3c23b6c40211127ca570ff7e438aa5e07bc9b1104",
+      "value": "0",
+      "commitment": "1936a5bc1b61b0c3d3220b80dc5d618b117b44d2aa3b0e11f2a28503c51a63cc",
+      "leaf": "1936a5bc1b61b0c3d3220b80dc5d618b117b44d2aa3b0e11f2a28503c51a6300",
+      "nullifier": "0081b6ed4cd9c41e8a56d1b4b6ea79d3765cfd428dafe7a5e458120adc9f26a4"
+    },
+    {
+      "key": 2,
+      "tokenType": "a0cf6a46ff086905ef7186208243adf46ec9de214c04571b4606bc2520102e89",
+      "nonce": "15296703562afe5a22a32a2bd8cbb45fbdb3254bc6a4b5ed5007727421451ce3",
+      "value": "1",
+      "commitment": "80056b8284e8ae4b63f97d2ada43c051dc69e3db99c37fa3e38f675a0a650821",
+      "leaf": "80056b8284e8ae4b63f97d2ada43c051dc69e3db99c37fa3e38f675a0a650800",
+      "nullifier": "91820a797a85d31350b4620325e212e1bdce4855e9b531542c120236a3d297a8"
+    },
+    {
+      "key": 2,
+      "tokenType": "54e2e8470c7d2a9d4ca61dfe11c0ae06939aa14a3a260e3301c88c1566138187",
+      "nonce": "e77dfbe7f3b27d90e1d120c8840edba5ec637284aa7e82b126d4632cda341e34",
+      "value": "1000000",
+      "commitment": "75550ac68258019efe926c099fd03db05e24090c9112f2bf406f7cb0577ac7cf",
+      "leaf": "75550ac68258019efe926c099fd03db05e24090c9112f2bf406f7cb0577ac700",
+      "nullifier": "5993e9e2b14f5b3ceb64862b42f066da4ef4afe6fed36e5dcbc92aae3830684a"
+    },
+    {
+      "key": 3,
+      "tokenType": "effa6ec798cc5d3968ac261282a196b916daf94d976b9b29d9287689a69421b9",
+      "nonce": "34e959f111986c8a3f502893188ca52631040bcb84491ee19b3f288ac8c9f818",
+      "value": "340282366920938463463374607431768211455",
+      "commitment": "144ef22bd898ee5f45d36ec1a53020e3af18126f08921e0b9c58f8ae8d6882a3",
+      "leaf": "144ef22bd898ee5f45d36ec1a53020e3af18126f08921e0b9c58f8ae8d688200",
+      "nullifier": "1727b9df243c8d535b7a65a606c2d9feebf2c21a6c3a43e959aaa3eb14d65f94"
+    },
+    {
+      "key": 3,
+      "tokenType": "f24a3dbd8612d0e15cbede8955c10cea98221b98d682ab28105f6474ce551bcc",
+      "nonce": "511a0a4647bf6d53d1e4ba3d7578f2b4ea6392cf215c48018dcd72727530c8e6",
+      "value": "201551769199687944124993417534771853038",
+      "commitment": "a9d08e5d2233f5e214d80458d076ca9e67b6b9338152da9a68c376f8510ea744",
+      "leaf": "a9d08e5d2233f5e214d80458d076ca9e67b6b9338152da9a68c376f8510ea700",
+      "nullifier": "f0b4b36ed42c5bd921d6ae86e4cc40bf5725a8afe1b049a64282f1cd835e0828"
+    },
+    {
+      "key": 3,
+      "tokenType": "f09c81078a6a6c24050cfa6de819052f62b4b7ec44b72914c0a274e639a00a89",
+      "nonce": "fd36ccbb2f5a5b5bf35285a53c6bb9d55b295603103627e9e92e45b8eb95900c",
+      "value": "136614866657555175188202710977905514081",
+      "commitment": "e1631b53ef3c6b627efbac23b25210f9a98cd45fdfb604086efbdb287574f256",
+      "leaf": "e1631b53ef3c6b627efbac23b25210f9a98cd45fdfb604086efbdb287574f200",
+      "nullifier": "33fdba8dff8b6c8f7a22dfc33fbf218afa2beb2850c5ccf32207d804830f38a8"
+    },
+    {
+      "key": 4,
+      "tokenType": "11d1b425e553c4fb0bcec6f011e128c2807f15d68992d8773877b02b15e22ecc",
+      "nonce": "3923131e41e0308c54ba61fb779ded17200d6d485922e1bd8d12689b891ce51d",
+      "value": "0",
+      "commitment": "f1a748237646532410f17216d15c48227c06c515c82a4938718613203c345b7d",
+      "leaf": "f1a748237646532410f17216d15c48227c06c515c82a4938718613203c345b00",
+      "nullifier": "0b3e76ec8825c9102e442a4c31c8eb2a738986870b9a6c2c6262f03e3413183c"
+    },
+    {
+      "key": 4,
+      "tokenType": "57438286f5c85280dcb4a0ba4f699b33a123fbf713d9b53c9e80b7f5f01ab17d",
+      "nonce": "7a978be20cf728ccf8e673eafa17c4487af53c4fd88eea7d3e983f86716e0de6",
+      "value": "1",
+      "commitment": "3cb80d366d05e8066c8c481adb31e233c6d54bbe435bcc62d83452b77d354884",
+      "leaf": "3cb80d366d05e8066c8c481adb31e233c6d54bbe435bcc62d83452b77d354800",
+      "nullifier": "8b8045f740d36a07710535fb707e3b3d984b6eefe883ccf662730db6ad33abf6"
+    },
+    {
+      "key": 4,
+      "tokenType": "46ffeec0b0243bffda9ff271e02405588d6d9960ac90a29b4fede6b50eb154b1",
+      "nonce": "7f055ec7b9b49bfcf02c5e7b34699392fba10749c3f1de9221d828836b38e808",
+      "value": "1000000",
+      "commitment": "e1a5f72cd764aa20cb8d4508ce07474f0565dd1ecb960dce6a075eb465c739fe",
+      "leaf": "e1a5f72cd764aa20cb8d4508ce07474f0565dd1ecb960dce6a075eb465c73900",
+      "nullifier": "cba9eef52492cd2898b01605be17e50868a33acdb68749e54af64314e6cc5aeb"
+    }
+  ],
+  "hash2": [
+    {
+      "a": "0000000000000000000000000000000000000000000000000000000000000000",
+      "b": "0000000000000000000000000000000000000000000000000000000000000000",
+      "out": "6c7fd72427ede22f339cd3b0deb35ae98ce8c0bd9c9423036b30f4eb0adf140f"
+    },
+    {
+      "a": "0100000000000000000000000000000000000000000000000000000000000000",
+      "b": "0200000000000000000000000000000000000000000000000000000000000000",
+      "out": "7751bf901778efbea2394e785bc41d20acb5c41eea5b5c107d56919df318d84a"
+    },
+    {
+      "a": "00000000fffffffffe5bfeff02a4bd5305d8a10908d83933487d9d2953a7ed73",
+      "b": "0000000000000000000000000000000000000000000000000000000000000000",
+      "out": "0842c38c68c985a181943451b2fcb861e3f24c47e912e010c2781377e770b43d"
+    },
+    {
+      "a": "1f51c0ed4711ff7121dde69713aa6bb2ffd61804cefe3a59389c5155da33fe4a",
+      "b": "4d400997cf06d2f5d5d46387e45efbefe8da0e87ab29e21a27cc95870f936f3a",
+      "out": "e87a1cbdef54c6be369b58d2d1036e03847236d606e257ae03b73be5116bd905"
+    },
+    {
+      "a": "b31e90902ba4c86adefd9c5ef173aa1b07c04dee0f2e45b2e17c58e0c720cd0b",
+      "b": "d2bfe36c2230a348f3b503ac58f193d316c078ae59017b06a04d340ee8260047",
+      "out": "70eed9f2ca6f23e1f1971d7be70ab718cd48abd935b7e41ec4cadd23e597945e"
+    },
+    {
+      "a": "251d707ae48fc1cf240f631af500c05cecf43df43ce9a94d2bb568e620e2ab65",
+      "b": "3fc15f586a6b30d6df25b67d292d1a9305c9dfa2c0ab577543ceb2782dec3f1c",
+      "out": "3e11b41ef9ec43a64b2a65724d811f00d11c6fa3675697510e033a40659e6a14"
+    },
+    {
+      "a": "b812ea50838c516a1808b8a8cc7bd80a33bcde9d1754a65dcf7cdac0c4f60f11",
+      "b": "e82293a0738b79db0f0eef8aee0c1a0a181577cdc1957aab7cd73737f04ef672",
+      "out": "dd1b25dade2499c722bc4ea71fc8bbe801543636bac0f0d8b1c7e76924f92e20"
+    },
+    {
+      "a": "85d54d1c5ba86c40c5d67330a014be9f4574c42d464ac0e8167599e265b12f24",
+      "b": "ce9fdb6b347152eaea39f70c09559d1dabe4fcdadc4c8264f45872bc25a9af03",
+      "out": "c976012514002906fd30a2080c99d6f12506c4c3bdb2a5a17d401b360ccf6b41"
+    }
+  ]
+}
