@@ -14,8 +14,11 @@ outputs encrypted to its key, and reads its coins and whether they are spent by 
 | `test/fixtures/` | Scan and coin vectors made with the ledger's `encrypt` from a fixed seed, for the core's tests |
 
 Not in this repository: the server, a module of UmbraDB that serves the snapshot files and answers the PIR calls
-under `/pss/v1`, and the TypeScript of UmbraDB's private shielded sync example that the Metal generator and the two
-checks import ([ios/README.md](ios/README.md#build-and-run) lists them).
+under `/pss/v1`.
+
+The script that writes the GPU scan code (`ios/metal/gen-metal.ts`) and the two tests that compare the app with
+UmbraDB's TypeScript client (`ios/check/`, `ios/metal/check/`) are included, but they need code from UmbraDB that
+isn't here, so they don't run on their own. The app doesn't need them: the GPU code the script writes is committed.
 
 ## On an iPhone 13
 

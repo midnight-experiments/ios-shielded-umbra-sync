@@ -26,9 +26,11 @@ xcodegen generate                   # PssSync.xcodeproj
 open PssSync.xcodeproj              # or ./run-sim.sh
 ```
 
-The generated Metal sources are committed. Regenerating them (`node metal/gen-metal.ts`), the client check and the
-Metal check import the TypeScript of UmbraDB's private shielded sync example (`../gpu/`, `../client/`, `../pir/`,
-`../shared/`, `../kernel/*.ts`), which this repository does not hold.
+The script that writes the GPU scan code (`metal/gen-metal.ts`) and the two tests that compare the app with
+UmbraDB's TypeScript client (the client check below, and the Metal check in `metal/README.md`) need code from UmbraDB's
+private shielded sync example that this repository does not hold (`../gpu/`, `../client/`, `../pir/`, `../shared/`,
+`../kernel/*.ts`), so they don't run on their own. The app doesn't need them: the GPU code the script writes is
+committed (`metal/generated/`).
 
 The server is the private shielded sync module's API (`umbradb run` with the module, port 10480 by default). The
 Simulator reaches the Mac's `127.0.0.1`; a phone needs the server on an address it can reach: `node lan-proxy.mjs`
