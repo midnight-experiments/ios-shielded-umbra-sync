@@ -1,0 +1,7 @@
+# Wallet mnemonics for run-sim.sh and run-device.sh (PSS_MNEMONIC_A/B)
+secrets.env
+
+# Rust and Xcode build output
+target/
+xcuserdata/
+.DS_Store
