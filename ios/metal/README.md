@@ -29,6 +29,34 @@ The constant table has one source: `gen-metal.ts` imports `constantTable`, `SLOT
 table as it is (595 slots × 20 words, a program-scope `constant uint` array of 47.6 KB); the 32-bit file holds the
 same slots converted to its Montgomery form (R = 2^256), checked against p, R, 1 and 2 when generated.
 
+### The constant table
+
+`CONSTS` in both generated files holds the fixed numbers the kernels use, one field element per slot: 20 words of
+13 bits in `PssScan.metal` (slot k starts at word 20·k), 8 words of 32 bits in `PssScanW32.metal` (at word 8·k). The
+kernels read slot k with `cld(k)`. "Montgomery form" means the value times R mod p, with R = 2^260 in the 13-bit file
+and 2^256 in the 32-bit one; p is the BLS12-381 scalar field's modulus, which is Jubjub's base field.
+
+| Slots | Holds |
+|---|---|
+| 0–203 | Poseidon's round constants, 68 rounds × 3, Montgomery form |
+| 204–212 | Poseidon's MDS matrix, row by row, Montgomery form |
+| 213 | p, plain words |
+| 214 | R² mod p (turns plain words into Montgomery form) |
+| 215 | R mod p (1 in Montgomery form) |
+| 216 | 2, Montgomery form (Poseidon's capacity element) |
+| 217 | Jubjub's d, Montgomery form |
+| 218 | 2·d, Montgomery form |
+| 219 | a generator of the 2^32-th roots of unity, Montgomery form (square roots) |
+| 220 | 1, plain words (turns a Montgomery value back into plain words) |
+| 221–228 | the steps of raising to p − 2 (inversion) and to (t − 1) / 2, where p − 1 = 2^32·t (square roots); not read: both files hold these steps as their own arrays, `STEPS_INV` and `STEPS_SQRT` |
+| 229–523 | Poseidon's partial rounds 4–62 in sparse form, five elements a round, Montgomery form |
+| 524–582 | the one constant each of those rounds adds |
+| 583–591 | the matrix of the last partial round (63), row by row |
+| 592–594 | the three constants added after it |
+
+So `cld(217u)` loads d and `cld(215u)` loads 1. The layout comes from `gpu/field.ts` in UmbraDB's private shielded
+sync example (its module comment), the file `gen-metal.ts` reads the table from.
+
 Kernels: `pss_scan_decompress`, `pss_scan_ladder`, `pss_scan_finish`, `pss_scan_torsion` and `pss_scan_layout`
 (`pss_scan32_…` in the variant). Buffers: 0 entries, 1 state, 2 outputs, 3 parameters (`setBytes`, 1,040 bytes: the
 WGSL uniform's layout). Everything else sits in a namespace per file (`pss_scan13`, `pss_scan32`) and the macros are
